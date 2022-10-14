@@ -29,9 +29,9 @@
             Price: {{ product.price }} $
         </h2>
         <p class="text-end px-4">
-            <NuxtLink to="/" >
+            <a href="#" @click.prevent="goBack()">
                 Go back
-            </NuxtLink>
+            </a>
         </p>
     </div>
 
@@ -51,6 +51,11 @@ export default {
         const product = await $axios.$get('https://dummyjson.com/products/' + params.id)
         return { product }
     },
+    methods: {
+        goBack() {
+            this.$router.go(-1)
+        }
+    }
 }
 </script>
 

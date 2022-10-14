@@ -5,7 +5,12 @@
         <!-- ФОРМА ПОИСКА.  
         При нажатии на Enter и при клике на Search!  
         Запускаем функцию searchProduct() -->
-        <form class="w-100 mb-3 mb-lg-0 me-lg-3 d-flex text-end" role="search">
+        <form
+            class="w-100 mb-3 mb-lg-0 me-lg-3 d-flex text-end" 
+            role="search"
+            name="searchForm"
+            id="searchF"
+        >
             <input type="search" v-model="search" class="form-control" placeholder="Search..." aria-label="Search" @keypress.enter="searchProduct()">
             <button type="submit" @click.prevent="searchProduct()" class="btn btn-primary">Search!</button>
         </form>
@@ -70,7 +75,7 @@
                                 <h5 class="card-title">{{ product.title }}</h5>
                                 <p class="card-text">{{ product.description }}</p>
                                 <h4>PRICE: {{ product.price }} $</h4>
-                                <button class="btn btn-primary" @click.prevent="openProduct(idx)">Read more</button>
+                                <a href="#" class="btn btn-primary" @click.prevent="openProduct(product.id)">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -176,9 +181,8 @@
                 console.log(this.url)
                 this.$fetch()
             },
-            openProduct(idx) {
-                idx += 1
-                this.$router.push('/products/' + idx)
+            openProduct(id) {
+                this.$router.push('/products/' + id)
             },
         },
     }

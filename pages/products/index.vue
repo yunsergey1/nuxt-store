@@ -16,7 +16,9 @@
         <tbody v-for="(product, idx) of products" :key="idx">
             <tr>
             <th scope="row">{{ product.id }}</th>
-            <td> <a href="#" @click.prevent="openProduct(idx)"> {{ product.title }} </a> </td>
+            <!-- <td> <a href="#" @click.prevent="openProduct(product.id)"> {{ product.title }} </a> </td> -->
+            <td> <a href="#" @click.prevent="$router.push('/products/' + product.id)"> {{ product.title }} </a> </td>
+            <!-- <td> <NuxtLink to="/products/:id"> {{ product.title }} </NuxtLink> </td> -->
             <td>{{ product.price }}</td>
             <td>{{ product.rating }}</td>
             <td>{{ product.stock }}</td>
@@ -45,9 +47,8 @@
             return { products }
         },
         methods: {
-            openProduct(idx) {
-                idx += 1
-                this.$router.push('/products/' + idx)
+            openProduct(id) {
+                this.$router.push('/products/' + id)
             }
         }
     }

@@ -1,5 +1,5 @@
 export default {
-  target: 'server',
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-store',
@@ -45,6 +45,8 @@ export default {
 
   axios: {
     // proxy: true
+    baseURL: 'http://localhost:3000', // Used as fallback if no runtime config is provided
+
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
